@@ -1,17 +1,14 @@
-# sleep.sh
+--- sleep.sh	2017-01-09 10:47:02.235015859 +0400
++++ sleep-time.sh	2017-01-10 12:40:08.814751551 +0400
+@@ -5,9 +5,9 @@
+ read -p "Mode: " mode
 
-echo "User is:" && id -u -n
-echo ""
-echo "1 - Disable sleep mode"
-echo "2 - Enable sleep mode"
-read -p "Mode: " mode
+ if ((mode == 1)); then
+-	sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
++	sudo time -p systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+ fi
 
-if ((mode == 1)); then
--  sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-+  sudo time -p systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-fi
-
-if ((mode == 2)); then
--  sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
-+  sudo time -p systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
-fi
+ if ((mode == 2)); then
+-	sudo systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
++	sudo time -p systemctl unmask sleep.target suspend.target hibernate.target hybrid-sleep.target
+ fi
